@@ -1,0 +1,41 @@
+<div class="row col-sm-6">
+  <p>Мой профиль</p>
+  <div *ngIf="avatar!= '' then thenBlock else elseBlock" class="card-name"> </div>
+
+  <ng-template #thenBlock>
+    <p>then</p>
+    <img width="100" height="100" (click)="imageSelect.click()" src="{{avatar}}" alt=""/>
+    <input type="file" style="display:none" (change)="selectFile($event)" #imageSelect>
+  </ng-template>
+
+  <ng-template #elseBlock>
+<!--    "/assets/static/box-pic.svg"-->
+    <p>else</p>
+    <img width="100" height="100" (click)="imageSelect.click()" src="assets/static/user-pic.svg" alt=""/>
+    <input type="file" style="display:none" (change)="selectFile($event)" #imageSelect>
+  </ng-template>
+  <h1>{{username}}</h1>
+
+  <form name="form" (ngSubmit)="onSubmit()" #f="ngForm" novalidate>
+    <div class="form-group">
+      <label for="firstName">Имя*</label>
+      <input class="form-control" name="firstName" [(ngModel)]="form.firstName" #firstName="ngModel"/>
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">Фамилия*</label>
+      <input class="form-control" name="lastName" [(ngModel)]="form.lastName" #lastName="ngModel" value="{{lastName}}"/>
+    </div>
+
+    <div class="form-group">
+      <label for="middleName">Отчество (если имеется)</label>
+      <input class="form-control" name="middleName" [(ngModel)]="form.middleName" #middleName="ngModel" value="{{middleName}}"/>
+    </div>
+
+    <hr>
+    <div class="form-group">
+      <button class="btn btn-primary" (click)="updateFCs()">Сохранить</button>
+    </div>
+  </form>
+
+</div>

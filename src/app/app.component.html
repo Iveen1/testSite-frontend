@@ -1,0 +1,35 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav" routerLinkActive="active">
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/">Главная</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/products">Каталог</a>
+      </li>
+      <li *ngIf="roles.includes('ROLE_ADMIN')" class="nav-item">
+        <a class="nav-link" routerLink="/admin">Админка</a>
+      </li>
+      <li *ngIf="roles.length>0" class="nav-item">
+        <a class="nav-link" routerLink="/my/favorites">Избранное</a>
+      </li>
+
+      <li *ngIf="roles.length===0" class="nav-item">
+        <button class="btn btn-success" routerLink="/login">Войти</button>
+      </li>
+
+      <li *ngIf="roles.length>0" class="nav-item">
+        <button class="btn btn-success" routerLink="/my/profile">Мой профиль</button>
+        <button class="btn btn-success" (click)="logOut()">Выйти</button>
+      </li>
+
+
+    </ul>
+  </div>
+</nav>
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
+
+<footer></footer>
+

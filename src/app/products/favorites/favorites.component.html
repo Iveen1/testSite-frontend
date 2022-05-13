@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="card" (click)="redirectToProduct(product.id)" *ngFor="let product of products">
+    <mat-card width="100" class="card">
+      <mat-card-title-group>
+        <mat-card-title>{{product.name}}</mat-card-title>
+        <mat-card-subtitle>#{{product.id}}</mat-card-subtitle>
+        <div *ngIf="product.photo != ''; then thenBlock else elseBlock" class="card-name"> </div>
+        <ng-template #thenBlock> <img mat-card-sm-image src="{{product.photo}}" alt=""/> </ng-template>
+        <ng-template #elseBlock> <img mat-card-sm-image src="/assets/static/box-pic.svg" alt=""/> </ng-template>
+      </mat-card-title-group>
+    </mat-card>
+  </div>
+  <hr>
+  <ul class="nav nav-pills">
+    <li class="nav-item " *ngFor="let page of pages; let i=index">
+      <a class="nav-link active" href="/products?page={{i}}"> {{i+1}}</a>
+    </li>
+  </ul>
+</div>

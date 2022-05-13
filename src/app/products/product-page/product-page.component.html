@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="card">
+<!--    <button routerLink="">Назад</button>-->
+    <mat-card class="example-card">
+      <mat-card-title-group>
+        <mat-card-title>{{name}}</mat-card-title>
+        <mat-card-subtitle>#{{id}}</mat-card-subtitle>
+        <div *ngIf="photo != ''; then thenBlock else elseBlock" class="card-name"> </div>
+        <ng-template #thenBlock> <img mat-card-xl-image src="{{photo}}" alt=""/> </ng-template>
+        <ng-template #elseBlock> <img mat-card-xl-image src="/assets/static/box-pic.svg" alt=""/> </ng-template>
+      </mat-card-title-group>
+      <mat-card-subtitle>Описание</mat-card-subtitle>
+      <mat-card-content>
+        {{title}}
+        <div *ngIf="isFavorite != true; then addFavorite else remFavorite"></div>
+        <ng-template #addFavorite>
+          <div class="example-button-container">
+            <button (click)="addToFavorites(product.id)" mat-raised-button color="primary">В избранное</button>
+          </div>
+        </ng-template>
+        <ng-template #remFavorite>
+          <div class="example-button-container">
+            <button (click)="remFromFavorites(product.id)" mat-raised-button color="warn">Удалить из избранного</button>
+          </div>
+        </ng-template>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+</div>

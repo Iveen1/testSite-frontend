@@ -1,0 +1,24 @@
+<h1>Добавить продукт</h1>
+<div class="row col-sm-6">
+  <img width="100" height="100" (click)="imageSelect.click()" src="/assets/static/box-pic.svg" alt=""/>
+  <input type="file" style="display:none" (change)="selectFile($event)" #imageSelect>
+  <h1>{{username}}</h1>
+
+  <form name="form" (ngSubmit)="onSubmit()" #f="ngForm" novalidate>
+    <div class="form-group">
+      <label for="firstName">Название</label>
+      <input class="form-control" name="firstName" [(ngModel)]="form.name" #firstName="ngModel"/>
+    </div>
+
+    <div class="form-group">
+      <label for="lastName">Описание</label>
+      <textarea class="form-control" name="lastName" [(ngModel)]="form.title" #lastName="ngModel" value="{{lastName}}"> </textarea>
+    </div>
+
+    <hr>
+    <div class="form-group">
+      <button class="btn btn-primary">Добавить</button>
+    </div>
+  </form>
+
+</div>
